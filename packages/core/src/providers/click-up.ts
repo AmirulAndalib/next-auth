@@ -1,12 +1,12 @@
 /**
- * <div style={{backgroundColor: "#24292f", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+ * <div class="provider" style={{backgroundColor: "#24292f", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
  * <span>Built-in <b>ClickUp</b> integration.</span>
  * <a href="https://clickup.com">
  *   <img style={{display: "block"}} src="https://authjs.dev/img/providers/click-up.svg" height="48" width="48"/>
  * </a>
  * </div>
  *
- * @module providers/ClickUp
+ * @module providers/click-up
  */
 
 import type { OAuthConfig, OAuthUserConfig } from "./index.js"
@@ -38,7 +38,12 @@ export interface ClickUpProfile {
  *
  * const request = new Request(origin)
  * const response = await Auth(request, {
- *   providers: [ClickUp({ clientId: CLICKUP_CLIENT_ID, clientSecret: CLICKUP_CLIENT_SECRET })],
+ *   providers: [
+ *     ClickUp({
+ *       clientId: CLICKUP_CLIENT_ID,
+ *       clientSecret: CLICKUP_CLIENT_SECRET,
+ *     }),
+ *   ],
  * })
  * ```
  *
@@ -55,7 +60,7 @@ export interface ClickUpProfile {
  * :::tip
  *
  * The ClickUp provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/click-up.ts).
- * To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/providers/custom-provider#override-default-options).
+ * To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/configuring-oauth-providers).
  *
  * :::
  *
@@ -73,7 +78,7 @@ export default function ClickUp(
   config: OAuthUserConfig<ClickUpProfile>
 ): OAuthConfig<ClickUpProfile> {
   return {
-    id: "clickup",
+    id: "click-up",
     name: "ClickUp",
     type: "oauth",
     authorization: "https://app.clickup.com/api",
@@ -91,12 +96,8 @@ export default function ClickUp(
       }
     },
     style: {
-      logo: "/click-up.svg",
-      logoDark: "/click-up.svg",
-      bg: "#fff",
-      bgDark: "#24292f",
-      text: "#000",
-      textDark: "#fff",
+      bg: "#24292f",
+      text: "#fff",
     },
     options: config,
   }

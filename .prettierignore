@@ -18,12 +18,10 @@ pnpm-lock.yaml
 
 # --------------- Docs ---------------
 
-.docusaurus
-build
-docs/docs/reference/core
-docs/docs/reference/sveltekit
+.next
+docs/pages/reference
 static
-docs/providers.json
+docs/manifest.mjs
 
 # --------------- Packages ---------------
 
@@ -31,19 +29,22 @@ coverage
 dist
 packages/**/*.cjs
 packages/**/*.js
+!packages/*/scripts/*.js
 
 # @auth/core
-packages/core/src/providers/oauth-types.ts
+packages/core/src/providers/provider-types.ts
 packages/core/src/lib/pages/styles.ts
 
 # @auth/sveltekit
 packages/frameworks-sveltekit/package
 packages/frameworks-sveltekit/vite.config.{js,ts}.timestamp-*
 
-# next-auth
-packages/next-auth/src/providers/oauth-types.ts
-packages/next-auth/css/index.css
+# @auth/express
+packages/frameworks-express/providers
 
+# next-auth
+packages/next-auth/src/providers/provider-types.ts
+packages/next-auth/css/index.css
 
 # Adapters
 .branches
@@ -56,7 +57,6 @@ migrations
 test.schema.gql
 
 # --------------- Apps ---------------
-
 
 # Examples should have their own Prettier config since they are templates too
 apps/example-sveltekit
